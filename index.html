@@ -46,7 +46,7 @@
         <canvas id="mychar2" style="position:relative; width:90%; height: 30%;"></canvas>
         <div id="cdiv">
             <canvas id="mycanvas"></canvas>
-            <canvas width="421" height="311" id="mycanvas"></canvas>
+            <canvas width="400" height="300" id="mycanvas"></canvas>
         </div>
     </div>
 
@@ -92,7 +92,7 @@
                 // if( true ){
                 if( DeviceOrientationEvent.requestPermission && typeof DeviceOrientationEvent.requestPermission === 'function' ){
                     $('#cdiv').css( 'display', 'none' ) ;
-                    let banner = '<div id="sensorrequest" onclick="ClickRequestDeviceSensor();" style="z-index:1; position:absolute; width:100%; background-color:#000; color:#fff;"><p style="padding:10px;">センサーの有効化</p></div>';
+                    let banner = '<div id="sensorrequest" onclick="ClickRequestDeviceSensor();" style="z-index:1; position:absolute; width:100%; background-color:#000; color:#fff;><p style="padding:10px;">センサーの有効化</p></div>';
                     $('body').prepend( banner );
                 }else{
                     window.addEventListener( "deviceorientation", deviceOrientation );
@@ -130,7 +130,7 @@
             let canvas = document.getElementById( 'mycanvas' );
             if( canvas && canvas.getContext ){
                 canvas.width = canvas_width = browserWidth * 0.8;
-                canvas.height = canvas_height = browserHeight * 0.2;
+                canvas.height = canvas_height = browserHeight * 0.4;
             }
         }
 
