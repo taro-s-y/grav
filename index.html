@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>MOS(motion & Orientation Sensor)</title>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.bundle.js"></script>
+
+    <link rel="shortcut icon" href="https://dotnsf.github.io/mos/imgs/icon.png" type="image/png">
+    <link rel="icon" href="https://dotnsf.github.io/mos/imgs/icon.png" type="image/png">
+    <link rel="apple-touch-icon" href="https://dotnsf.github.io/mos/imgs/icon.png">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="apple-mobile-web-app-title" content="MOS">
+
+
+    <style type="text/css">
+        html, body{
+            text-align: center;
+            background-color: #fafafa;
+            font-size: 20px;
+            color: #333;
+        }
+        body{
+            background-color: #ffffcc;
+        }
+        #mycanvas{
+            border: 1px solid #333;
+            background-color: #ffcccc;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- <div id="sensorrequest" onclick="ClickRequestDeviceSensor();" style="z-index:1; position:absolute; width:100%; background-color:#000; color:#fff;">
+        <p style="padding:10px;">センサーの有効化</p>
+    </div> -->
+
+    <div class="container">
+        <canvas id="mychar1" style="position:relative; width:90%; height: 30%;"></canvas>
+        <canvas id="mychar2" style="position:relative; width:90%; height: 30%;"></canvas>
+        <div id="cdiv">
+            <canvas id="mycanvas"></canvas>
+            <!-- <canvas width="421" height="311" id="mycanvas"></canvas> -->
+        </div>
+    </div>
+
+    <script>
+        let isTouch = false;
+        let motionData = [];
+        let orientationData = [];
+
+        function ClickRequestDeviceSensor(){
+            DeviceOrientationEvent.requestPermission().then( function( response ){
+                if( response === 'granted' ){
+                    window.addEventListener( "deviceorientation", deviceOrientation );
+                    $('#sensorrequest').css( 'display', 'none' );
+                    $('#cdiv').css( 'display', 'block' );
+                }
+            }).catch( function( e ){
+                console.log( e );
+            });
+
+            DeviceMotionEvent.requestPermission().then( function( response ){
+                if( response === 'granted' ){
+                    window.addEventListener( "devicemotion", deviceMotion );
+                    $('#sensorrequest').css( 'display', 'none' );
+                    $('#cdiv').css( 'display', 'block' );
+                }
+            }).catch( function( e ){
+                console.log( e );
+            });
+        }
+
+        $(function(){
+            init();
+        });
+
+        function init(){
+            let canvas = document.getElementById( 'mycanvas' );
+            if( !canvas || !canvas.getContext ){
+                return false;
+            }
+
+            // if( true ){
+            if( window.DeviceOrientationEvent ){
+                // if( true ){
+                if( DeviceOrientationEvent.requestPermission && typeof DeviceOrientationEvent.requestPermission === 'function' ){
+                    $('#cdiv').css( 'display', 'none' ) ;
+                    let banner = '<div id="sensorrequest" onclick="ClickRequestDeviceSensor();" style="z-index:1; position:absolute; width:100%; background-color:#000; color:#fff;"><p style="padding:10px;">センサーの有効化</p></div>';
+                    $('body').prepend( banner );
+                }else{
+                    window.addEventListener( "deviceorientation", deviceOrientation );
+                }
+            }
+            if( window.DeviceMotionEvent ){
+                if( DeviceMotionEvent.requestPermission && typeof DeviceMotionEvent.requestPermission === 'function' ){
+
+                }else{
+                    window.addEventListener( "devicemotion", deviceMotion );
+                }
+            }
+
+            if( window.TouchEvent ){
+                canvas.addEventListener( "touchstart", touchStart );
+                canvas.addEventListener( "touchend", touchEnd );
+            }
+
+            $(window).on( 'load resize', function(){
+                resized();
+            });
+            resized();
+
+            let movefun = function( event ){
+                event.preventDefault();
+            }
+            window.addEventListener( 'touchmove', movefun, { passive: false } );
+        }
+
+        let canvas_width = 0;
+        let canvas_height = 0;
+        function resized(){
+            let browserWidth = window.innerWidth;
+            let browserHeight = window.innerHeight;
+            let canvas = document.getElementById( 'mycanvas' );
+            if( canvas && canvas.getContext ){
+                canvas.width = canvas_width = browserWidth * 0.8;
+                canvas.height = canvas_height = browserHeight * 0.2;
+            }
+        }
+
+        function touchStart( e ){
+            e.preventDefault();
+            isTouch = true;
+            motionData = [];
+            orientationData = [];
+        }
+
+        function touchEnd( e ){
+            e.preventDefault();
+            isTouch = false;
+
+            if( motionData && motionData.length > 0 ){
+                let labels = [];
+                let x_data = [];
+                let y_data = [];
+                let z_data = [];
+                for( let i = 0; i < motionData.length; i ++ ){
+                    let mot = motionData[i];
+                    labels.push( '' + i );
+                    x_data.push( mot['ac'].x );
+                    y_data.push( mot['ac'].y );
+                    z_data.push( mot['ac'].z );
+                }
+
+                let ctx1 = document.getElementById( 'mychart1' );
+                let myChart1 = new Chart( ctx1, {
+                    type: 'line',
+                    data: {
+                        labels: labels,
+                        datasets: [{
+                            label: 'x',
+                            borderWidth: 1,
+                            backgroundColor: '#ffaaaa',
+                            borderColor: '#ff5555',
+                            fill: false,
+                            data: x_data
+                        },
+                        {
+                            label: 'y',
+                            borderWidth: 1,
+                            backgroundColor: '#aaffaa',
+                            borderColor: '#55ff55',
+                            fill: false,
+                            data: y_data
+                        },
+                        {
+                            label: 'z',
+                            borderWidth: 1,
+                            backgroundColor: '#aaaaff',
+                            borderColor: '#5555ff',
+                            fill: false,
+                            data: z_data
+                        }]                    
+                    },
+                    options: {
+                        title: {
+                            display: false,
+                            text: '三軸加速度',
+                            padding: 3
+                        },
+                        legend: {
+                            labels: {
+                                boxWidth: 30,
+                                padding: 20
+                            },
+                            display: true
+                        },
+                        tooltips: {
+                            mode: 'label'
+                        }
+                    }
+                });
+
+                motionData = [];
+            }
+
+            if( orientationData && orientationData.length > 0 ){
+                let labels = [];
+                let fb_data = [];
+                let lr_data = [];
+                let dir_data = [];
+                for( let i = 0; i < orientationData.length; i ++ ){
+                    let ori = orientationData[i];
+                    labels.push( '' + i ) ;
+                    fb_data.push( ori['fb'] );
+                    lr_data.push( ori['lr'] );
+                    dir_data.push( ori['dir'] );
+                }
+
+                let ctx2 = document.getElementById( 'mychart2' );
+                let myCart2 = new Chart( ctx2, {
+                    type: 'line',
+                    data: {
+                        labels: labels,
+                        datasets: [{
+                            label: '前後',
+                            borderWidth: 1,
+                            backgraoundColor: '#ffaaff',
+                            borderColor: '#ff55ff',
+                            fill: false,
+                            data: fb_data
+                        },
+                        {
+                            label: '左右',
+                            borderWidth: 1,
+                            backgraoundColor: '#aaffff',
+                            borderColor: '#55ffff',
+                            fill: false,
+                            data: lr_data
+                        }]
+                    },
+                    options: {
+                        title: {
+                            display: false,
+                            text: '前後左右角度',
+                            padding: 3
+                        },
+                        legend: {
+                            labels: {
+                                boxWidth: 30,
+                                padding: 20
+                            },
+                            display: true
+                        },
+                        tooltips: {
+                            mode: 'label'
+                        }
+                    }
+                });
+
+                orientationData = []
+            }
+        }
+
+        function deviceMotion( e ){
+            e.preventDefault();
+            if( isTouch ){
+                let ac = e.acceleration;
+                let acg = e.accelerationcludingGravity;
+                let rot = e.rotationRate;
+
+                let motion = {};
+                motion['ac'] = ac;
+                motion['acg'] = acg;
+                motion['rot'] = rot;
+
+                motionData.push( motion );
+            }
+        }
+        
+        function deviceOrientation( e ){
+            e.preventDefault();
+            if( isTouch ){
+                let gamma = e.gamma;
+                let beta = e.beta;
+                let alpha = e.alpha;
+
+                let ori = {};
+                ori['dir'] = alpha;
+                ori['fb'] = beta;
+                ori['lr'] = gamma;
+
+                orientationData.push( ori );
+            }
+        }
+    </script>
+
+    <!-- <div id="sensorrequest" onclick="ClickRequestDeviceSensor();" style="z-index:1; position:absolute; width:100%; background-color:#000; color:#fff;">
+        <p style="padding:10px;">センサーの有効化</p>
+    </div> -->
+    
+</body>
+</html>
