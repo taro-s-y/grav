@@ -37,7 +37,7 @@
         <!-- <canvas id="mychart1" style="position:relative; width: 90%; height: 40%;"></canvas>
         <canvas id="mychart2" style="position:relative; width: 90%; height: 40%;"></canvas> -->
         <canvas id="mychart1" width="500px" height="300px"></canvas>
-        <canvas id="mychart2" width="500px" height="300px"></canvas>
+        <!-- <canvas id="mychart2" width="500px" height="300px"></canvas> -->
         <div id="cdiv">
             <canvas id="mycanvas1" width="50px" height="50px"></canvas>
             <canvas id="mycanvas2" width="50px" height="50px"></canvas>
@@ -226,62 +226,62 @@
                 motionData = [];
             }
 
-            if( orientationData && orientationData.length > 0 ){
-                let labels = [];
-                let fb_data = [];
-                let lr_data = [];
-                let dir_data = [];
-                for( let i = 0; i < orientationData.length; i ++ ){
-                    let ori = orientationData[i];
-                    labels.push( '' + i ) ;
-                    fb_data.push( ori['fb'] );
-                    lr_data.push( ori['lr'] );
-                    dir_data.push( ori['dir'] );
-                }
+            // if( orientationData && orientationData.length > 0 ){
+            //     let labels = [];
+            //     let fb_data = [];
+            //     let lr_data = [];
+            //     let dir_data = [];
+            //     for( let i = 0; i < orientationData.length; i ++ ){
+            //         let ori = orientationData[i];
+            //         labels.push( '' + i ) ;
+            //         fb_data.push( ori['fb'] );
+            //         lr_data.push( ori['lr'] );
+            //         dir_data.push( ori['dir'] );
+            //     }
 
-                let ctx2 = document.getElementById( 'mychart2' );
-                let myCart2 = new Chart( ctx2, {
-                    type: 'line',
-                    data: {
-                        labels: labels,
-                        datasets: [{
-                            label: '前後',
-                            borderWidth: 1,
-                            backgraoundColor: '#ffaaff',
-                            borderColor: '#ff55ff',
-                            fill: false,
-                            data: fb_data
-                        },
-                        {
-                            label: '左右',
-                            borderWidth: 1,
-                            backgraoundColor: '#aaffff',
-                            borderColor: '#55ffff',
-                            fill: false,
-                            data: lr_data
-                        }]
-                    },
-                    options: {
-                        title: {
-                            display: false,
-                            text: '前後左右角度',
-                            padding: 3
-                        },
-                        legend: {
-                            labels: {
-                                boxWidth: 30,
-                                padding: 20
-                            },
-                            display: true
-                        },
-                        tooltips: {
-                            mode: 'label'
-                        }
-                    }
-                });
+            //     let ctx2 = document.getElementById( 'mychart2' );
+            //     let myCart2 = new Chart( ctx2, {
+            //         type: 'line',
+            //         data: {
+            //             labels: labels,
+            //             datasets: [{
+            //                 label: '前後',
+            //                 borderWidth: 1,
+            //                 backgraoundColor: '#ffaaff',
+            //                 borderColor: '#ff55ff',
+            //                 fill: false,
+            //                 data: fb_data
+            //             },
+            //             {
+            //                 label: '左右',
+            //                 borderWidth: 1,
+            //                 backgraoundColor: '#aaffff',
+            //                 borderColor: '#55ffff',
+            //                 fill: false,
+            //                 data: lr_data
+            //             }]
+            //         },
+            //         options: {
+            //             title: {
+            //                 display: false,
+            //                 text: '前後左右角度',
+            //                 padding: 3
+            //             },
+            //             legend: {
+            //                 labels: {
+            //                     boxWidth: 30,
+            //                     padding: 20
+            //                 },
+            //                 display: true
+            //             },
+            //             tooltips: {
+            //                 mode: 'label'
+            //             }
+            //         }
+            //     });
 
-                orientationData = []
-            }
+            //     orientationData = []
+            // }
         }
 
         function deviceMotion( e ){
