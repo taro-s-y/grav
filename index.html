@@ -75,6 +75,7 @@
         function init(){
             let canvas1 = document.getElementById( 'mycanvas1' );
             let canvas2 = document.getElementById( 'mycanvas2' );
+
             if( !canvas1 || !canvas1.getContext ){
                 return false;
             }
@@ -110,10 +111,10 @@
             });
             resized();
 
-            let movefun = function( event ){
-                event.preventDefault();
-            }
-            window.addEventListener( 'touchmove', movefun, { passive: false } );
+            // let movefun = function( event ){
+            //     event.preventDefault();
+            // }
+            // window.addEventListener( 'touchmove', movefun, { passive: false } );
         }
 
         let canvas1_width = 0;
