@@ -34,7 +34,7 @@
 
     <div class="container">
         <canvas id="mychart1" style="position:relative; width:90%; height: 30%;"></canvas>
-        <canvas id="mychart2" style="position:relative; width:90%; height: 300%;"></canvas>
+        <canvas id="mychart2" style="position:relative; width:90%; height: 30%;"></canvas>
         <div id="cdiv">
             <canvas width="100" height="100" id="mycanvas1"></canvas>
             <canvas width="100" height="100" id="mycanvas2"></canvas>
@@ -128,11 +128,11 @@
             let canvas1 = document.getElementById( 'mycanvas1' );
             let canvas2 = document.getElementById( 'mycanvas2' );
             if( canvas1 && canvas1.getContext ){
-                canvas1.width = canvas1_width = browserWidth * 0.2;
+                canvas1.width = canvas1_width = browserWidth * 0.4;
                 canvas1.height = canvas1_height = browserHeight * 0.1;
             }
             if( canvas2 && canvas2.getContext ){
-                canvas2.width = canvas2_width = browserWidth * 0.2;
+                canvas2.width = canvas2_width = browserWidth * 0.4;
                 canvas2.height = canvas2_height = browserHeight * 0.1;
             }
         }
