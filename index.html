@@ -35,8 +35,8 @@
     <div class="container">
         <!-- <canvas id="mychart1" style="position:relative; width:90%; height:40%;"></canvas>
         <canvas id="mychart2" style="position:relative; width:90%; height:40%;"></canvas> -->
-        <canvas id="mychart1" width="100" height="40"></canvas>
-        <canvas id="mychart2" width="100" height="40"></canvas>
+        <canvas id="mychart1" width="90" height="40"></canvas>
+        <canvas id="mychart2" width="90" height="40"></canvas>
         <div id="cdiv">
             <canvas id="mycanvas1" width="50" height="20"></canvas>
             <canvas id="mycanvas2" width="50" height="20"></canvas>
@@ -131,12 +131,12 @@
             let canvas2 = document.getElementById( 'mycanvas2' );
 
             if( canvas1 && canvas1.getContext ){
-                canvas1.width = canvas1_width = browserWidth * 0.3;
-                canvas1.height = canvas1_height = browserHeight * 0.1;
+                canvas1.width = canvas1_width = browserWidth * 1;
+                canvas1.height = canvas1_height = browserHeight * 1;
             }
             if( canvas2 && canvas2.getContext ){
-                canvas2.width = canvas2_width = browserWidth * 0.3;
-                canvas2.height = canvas2_height = browserHeight * 0.1;
+                canvas2.width = canvas2_width = browserWidth * 1;
+                canvas2.height = canvas2_height = browserHeight * 1;
             }
         }
 
