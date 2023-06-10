@@ -32,7 +32,7 @@
 <body>
 
 
-    <div class="container">
+    <div class="container" width="300" height="300">
 
         <!-- <canvas id="mychart1" style="position:relative; width: 90%; height: 80%;"></canvas> -->
         <!-- <canvas id="mychart2" style="position:relative; width: 90%; height: 40%;"></canvas> -->
@@ -109,10 +109,10 @@
                 canvas2.addEventListener( "touchend", touchEnd );
             }
 
-            $(window).on( 'load resize', function(){
-                resized();
-            });
-            resized();
+            // $(window).on( 'load resize', function(){
+            //     resized();
+            // });
+            // resized();
 
             // let movefun = function( event ){
             //     event.preventDefault();
