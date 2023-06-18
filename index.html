@@ -90,15 +90,11 @@
         function touchStart( e ){
             e.preventDefault();
             isTouch = true;
-            motionData = [];
-            orientationData = [];
         }
 
         function touchEnd( e ){
             e.preventDefault();
             isTouch = false;
-
-            motionData = [];
         }
 
         function deviceMotion( e ){
@@ -107,13 +103,6 @@
                 let ac = e.acceleration;
                 let acg = e.accelerationcludingGravity;
                 let rot = e.rotationRate;
-
-                let motion = {};
-                motion['ac'] = ac;
-                motion['acg'] = acg;
-                motion['rot'] = rot;
-
-                motionData.push( motion );
 
                 let txt = document.getElementById( 'mychart1' );
                 txt.innerHTML = "x: " + ac + "<br>" + "y: " + acg + "<br>" + "z: " + rot
