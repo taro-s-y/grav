@@ -31,7 +31,8 @@
 
 <body>
 
-    <div class="container">
+    <div class = "container">
+        <div id = "txt"></div>
         <canvas id="mychart1" width="500" height="1000"></canvas>
         <div id="cdiv">
             <canvas id="mycanvas1" width="100" height="100"></canvas>
@@ -104,7 +105,7 @@
                 let acg = e.accelerationcludingGravity;
                 let rot = e.rotationRate;
 
-                let txt = document.getElementById( 'mychart1' );
+                let txt = document.getElementById( 'txt' );
                 txt.innerHTML = "x: " + ac + "<br>" + "y: " + acg + "<br>" + "z: " + rot
             }
         }
