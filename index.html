@@ -104,16 +104,16 @@
                 // let y_data = [];
                 // let z_data = [];
                 for( let i = 0; i < motionData.length; i ++ ){
-                    let ax = motionData[i].x;
-                    let ay = motionData[i].y;
-                    let az = motionData[i].z;
+                    // let ax = motionData[i].x;
+                    // let ay = motionData[i].y;
+                    // let az = motionData[i].z;
                     // let mot = motionData[i];
                     // labels.push( '' + i );
                     // x_data.push( mot['ac'].x );
                     // y_data.push( mot['ac'].y );
                     // z_data.push( mot['ac'].z );
-                    let txt = document.getElementById( 'mychart1' );
-                    txt.innerHTML = "x: " + ax + "<br>" + "y: " + ay + "<br>" + "z: " + az
+                    // let txt = document.getElementById( 'mychart1' );
+                    // txt.innerHTML = "x: " + ax + "<br>" + "y: " + ay + "<br>" + "z: " + az
                 }
 
 
@@ -185,6 +185,9 @@
                 motion['rot'] = rot;
 
                 motionData.push( motion );
+
+                let txt = document.getElementById( 'mychart1' );
+                txt.innerHTML = "x: " + ac + "<br>" + "y: " + acg + "<br>" + "z: " + rot
             }
         }
 
