@@ -98,78 +98,7 @@
             e.preventDefault();
             isTouch = false;
 
-            if( motionData && motionData.length > 0 ){
-                // let labels = [];
-                // let x_data = [];
-                // let y_data = [];
-                // let z_data = [];
-                for( let i = 0; i < motionData.length; i ++ ){
-                    // let ax = motionData[i].x;
-                    // let ay = motionData[i].y;
-                    // let az = motionData[i].z;
-                    // let mot = motionData[i];
-                    // labels.push( '' + i );
-                    // x_data.push( mot['ac'].x );
-                    // y_data.push( mot['ac'].y );
-                    // z_data.push( mot['ac'].z );
-                    // let txt = document.getElementById( 'mychart1' );
-                    // txt.innerHTML = "x: " + ax + "<br>" + "y: " + ay + "<br>" + "z: " + az
-                }
-
-
-
-                // let ctx1 = document.getElementById( 'mychart1' );
-                // let myChart1 = new Chart( ctx1, {
-                //     type: 'line',
-                //     data: {
-                //         labels: labels,
-                //         datasets: [{
-                //             label: 'x',
-                //             borderWidth: 1,
-                //             backgroundColor: '#ffaaaa',
-                //             borderColor: '#ff5555',
-                //             fill: false,
-                //             data: x_data
-                //         },
-                //         {
-                //             label: 'y',
-                //             borderWidth: 1,
-                //             backgroundColor: '#aaffaa',
-                //             borderColor: '#55ff55',
-                //             fill: false,
-                //             data: y_data
-                //         },
-                //         {
-                //             label: 'z',
-                //             borderWidth: 1,
-                //             backgroundColor: '#aaaaff',
-                //             borderColor: '#5555ff',
-                //             fill: false,
-                //             data: z_data
-                //         }]                    
-                //     },
-                //     options: {
-                //         title: {
-                //             display: false,
-                //             text: '三軸加速度',
-                //             padding: 3
-                //         },
-                //         legend: {
-                //             labels: {
-                //                 boxWidth: 30,
-                //                 padding: 20
-                //             },
-                //             display: true
-                //         },
-                //         tooltips: {
-                //             mode: 'label'
-                //         }
-                //     }
-                // });
-
-                motionData = [];
-            }
-
+            motionData = [];
         }
 
         function deviceMotion( e ){
