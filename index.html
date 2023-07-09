@@ -37,6 +37,8 @@
     <script>
         let isTouch = false;
         let aX = 0, aY = 0, aZ = 0;
+        let canvas = document.getElemetById('canvas');
+        let context = canvas.getContext('2d');
 
         function ClickRequestDeviceSensor(){
             DeviceMotionEvent.requestPermission().then( function( response ){
