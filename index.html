@@ -26,8 +26,8 @@
 <body>
 
     <div class = "container">
+        <div id = "txt">ここにデータを表示</div>
         <div id = "cdiv">
-            ここにデータを表示
             <canvas id = "start" width = "100" height = "75"></canvas>
             <canvas id = "end" width = "100" height = "75"></canvas>
         </div>
@@ -105,7 +105,7 @@
         }, 33);
 
         function displayData(){
-            let txt = document.getElementById( "cdiv" );
+            let txt = document.getElementById( "txt" );
             txt.innderHTML = "x: " + aX + "<br>" + "y: " + aY + "<br>" + "z: " + aZ;
         }
 
