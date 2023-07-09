@@ -94,9 +94,9 @@
         function deviceMotion( e ){
             e.preventDefault();
             if( isTouch ){
-                aX = e.acceleration;
-                aY = e.accelerationcludingGravity;
-                aZ = e.rotationRate;
+                aX = e.accelerationIncludingGravity.x;
+                aY = e.accelerationIncludingGravity.y;
+                aZ = e.accelerationIncludingGravity.z;
             }
 
             let txt = document.getElementById( "txt" );
