@@ -27,7 +27,7 @@
 
     <div class = "container">
         <div id = "txt">ここにデータを表示</div>
-        <canvas id = "canvas" width = "300" height = "400"></canvas>
+        <canvas id = "display" width = "300" height = "400"></canvas>
         <div id = "cdiv">
             <canvas id = "start" width = "100" height = "75"></canvas>
             <canvas id = "end" width = "100" height = "75"></canvas>
@@ -37,8 +37,8 @@
     <script>
         let isTouch = false;
         let aX = 0, aY = 0, aZ = 0;
-        let canvas = document.getElemetById('canvas');
-        let context = canvas.getContext('2d');
+        let display = document.getElemetById( 'display' );
+        let context = display.getContext( '2d' );
 
         function ClickRequestDeviceSensor(){
             DeviceMotionEvent.requestPermission().then( function( response ){
@@ -108,8 +108,8 @@
         }
 
         function drawBall() {
-            let centerX = canvas.width/2;
-            let centerY = canvas.height/2;
+            let centerX = display.width/2;
+            let centerY = display.height/2;
             let ballRad = 50;
             let ballColor = "rgb(0, 0, 255)";
             let g = 9.86665;
@@ -120,7 +120,7 @@
                 aY *= -1;
                 aZ *= -1;
             }
-            context.clearRect(0, 0, canvas.width, canvas.height);
+            context.clearRect(0, 0, display.width, display.height);
             context.beginPath()
             context.arc(centerX - d * aX, centerY + d * aY, ballRad - 3 * aZ, 0, 2 * Math.PI);
             context.fillStyle = ballColor;
