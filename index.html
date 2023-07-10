@@ -29,7 +29,7 @@
         <p></p>
     </div>
     <div class = "container">
-        <canvas id = "canvasDisp" width = "300" height = "400"></canvas>
+        <canvas id = "canvas" width = "300" height = "400"></canvas>
         <div id = "txt">ここにデータを表示</div>
         <div id = "cdiv">
             <canvas id = "start" width = "100" height = "75"></canvas>
@@ -109,10 +109,10 @@
         }
 
         function drawBall() {
-            let canvasDisp = document.getElemetById( 'canvasDisp' );
-            let ctx = canvasDisp.getContext( '2d' );
-            let centerX = canvasDisp.width/2;
-            let centerY = canvasDisp.height/2;
+            let canvas = document.getElemetById( 'canvas' );
+            let ctx = canvas.getContext( '2d' );
+            let centerX = canvas.width/2;
+            let centerY = canvas.height/2;
             let ballRad = 150;
             let ballColor = "rgb(0, 0, 255)";
             let g = 9.80665;
@@ -123,7 +123,7 @@
                 aY *= -1;
                 aZ *= -1;
             }
-            ctx.clearRect(0, 0, canvasDisp.width, canvasDisp.height);
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
             ctx.beginPath()
             ctx.arc(centerX - d * aX, centerY + d * aY, ballRad - 3 * aZ, 0, 2 * 3.14); //Math.PI);
             ctx.fillStyle = ballColor;
