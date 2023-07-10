@@ -108,15 +108,14 @@
             drawBall();
         }
 
-        let canvas = document.getElemetById( 'canvas' );
-        let context = canvas.getContext( '2d' );
-
         function drawBall() {
+            let canvas = document.getElemetById( 'canvas' );
+            let context = canvas.getContext( '2d' );
             let centerX = canvas.width/2;
             let centerY = canvas.height/2;
             let ballRad = 50;
             let ballColor = "rgb(0, 0, 255)";
-            let g = 9.86665;
+            let g = 9.80665;
             let d = centerX / g;
             let os = navigator.platform;
             if(os === "iPhone" || os === "iPad" || os === "iPod") {
