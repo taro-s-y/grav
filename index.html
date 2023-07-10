@@ -26,9 +26,10 @@
 <body>
 
     <div class = "container">
-        <!-- <canvas id = "draw" width = "300" height = "400"></canvas> -->
+        <!-- <canvas id = "ball" width = "300" height = "400"></canvas> -->
         <div id = "txt">ここにデータを表示</div>
-        <div id = "cdiv">
+        <div id = "cdiv">許可でるかな？</div>
+        <div>
             <canvas id = "start" width = "100" height = "75"></canvas>
             <canvas id = "end" width = "100" height = "75"></canvas>
         </div>
@@ -37,8 +38,8 @@
     <script>
         let isTouch = false;
         let aX = 0, aY = 0, aZ = 0;
-        let draw = document.getElemetById( 'draw' );
-        let context = draw.getContext( '2d' );
+        let ball = document.getElemetById( 'ball' );
+        let context = ball.getContext( '2d' );
 
         function ClickRequestDeviceSensor(){
             DeviceMotionEvent.requestPermission().then( function( response ){
@@ -108,8 +109,8 @@
         }
 
         function drawBall() {
-            // let centerX = draw.width/2;
-            // let centerY = draw.height/2;
+            // let centerX = ball.width/2;
+            // let centerY = ball.height/2;
             // let ballRad = 50;
             // let ballColor = "rgb(0, 0, 255)";
             // let g = 9.86665;
@@ -120,7 +121,7 @@
             //     aY *= -1;
             //     aZ *= -1;
             // }
-            // context.clearRect(0, 0, draw.width, draw.height);
+            // context.clearRect(0, 0, ball.width, ball.height);
             // context.beginPath()
             // context.arc(centerX - d * aX, centerY + d * aY, ballRad - 3 * aZ, 0, 2 * Math.PI);
             // context.fillStyle = ballColor;
