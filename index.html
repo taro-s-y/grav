@@ -113,7 +113,7 @@
             let ctx = canvas.getContext( '2d' );
             let centerX = canvas.width/2;
             let centerY = canvas.height/2;
-            let ballRad = 50;
+            let ballRad = 150;
             let ballColor = "rgb(0, 0, 255)";
             let g = 9.80665;
             let d = centerX / g;
@@ -123,9 +123,6 @@
                 aY *= -1;
                 aZ *= -1;
             }
-            aX=0.1;
-            aY=0.1;
-            aZ=0.5;
             ctx.clearRect(0, 0, canvas.width, canvas.height);
             ctx.beginPath()
             ctx.arc(centerX - d * aX, centerY + d * aY, ballRad - 3 * aZ, 0, 2 * 3.14); //Math.PI);
