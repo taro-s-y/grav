@@ -110,10 +110,10 @@
 
         function drawBall() {
             let canvas = document.getElemetById( 'canvas' );
-            let ctx = canvas.getContext( '2d' );
+            let ctxt = canvas.getContext( '2d' );
             let centerX = canvas.width/2;
             let centerY = canvas.height/2;
-            let ballRad = 150;
+            let ballRad = 50;
             let ballColor = "rgb(0, 0, 255)";
             let g = 9.80665;
             let d = centerX / g;
@@ -123,11 +123,11 @@
                 aY *= -1;
                 aZ *= -1;
             }
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            ctx.beginPath()
-            ctx.arc(centerX - d * aX, centerY + d * aY, ballRad - 3 * aZ, 0, 2 * 3.14); //Math.PI);
-            ctx.fillStyle = ballColor;
-            ctx.fill();
+            ctxt.clearRect(0, 0, canvas.width, canvas.height);
+            ctxt.beginPath()
+            ctxt.arc(centerX - d * aX, centerY + d * aY, ballRad - 3 * aZ, 0, 2 * 3.14); //Math.PI);
+            ctxt.fillStyle = ballColor;
+            ctxt.fill();
         }
 
     </script>
