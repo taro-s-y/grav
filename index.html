@@ -44,8 +44,8 @@
             DeviceMotionEvent.requestPermission().then( function( response ){
                 if( response === 'granted' ){
                     window.addEventListener( "devicemotion", deviceMotion );
-                    $('#sensorrequest').css( 'display', 'none' );
-                    $('#cdiv').css( 'display', 'block' );
+                    $('#sensorrequest').css( 'display', 'none' );   //bannerで追加されたdivを非表示にする
+                    $('#cdiv').css( 'display', 'block' );           //非表示にされたいたcdivを表示する
                 }
             }).catch( function( e ){
                 console.log( e );
@@ -69,9 +69,9 @@
 
             if( window.DeviceMotionEvent ){
                 if( DeviceMotionEvent.requestPermission && typeof DeviceMotionEvent.requestPermission === 'function' ){
-                    $('#cdiv').css( 'display', 'none' ) ;
+                    $('#cdiv').css( 'display', 'none' ) ;           //cdivを非表示にする
                     let banner = '<div id="sensorrequest" onclick="ClickRequestDeviceSensor();" style="z-index:1; position:absolute; width:100%; background-color:#000; color:#fff;><p style="padding:10px;">センサーの有効化</p></div>';
-                    $('body').prepend( banner );
+                    $('body').prepend( banner );                    //bodyの先頭にbannerを挿入する
                 }else{
                     window.addEventListener( "devicemotion", deviceMotion );
                 }
@@ -104,7 +104,7 @@
 
             let txt = document.getElementById( "txt" );
             txt.innerHTML = "x: " + aX + "<br>" + "y: " + aY + "<br>" + "z: " + aZ;
-            drawBall();
+            // drawBall();
         }
 
         function drawBall() {
