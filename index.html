@@ -107,28 +107,28 @@
             txt.innerHTML = "x: " + aX + "<br>" + "y: " + aY + "<br>" + "z: " + aZ;
             drawBall();
         }
-        
+
         let canvas = document.getElemetById( 'canvas' );
         let context = canvas.getContext( '2d' );
 
         function drawBall() {
-            // let centerX = canvas.width/2;
-            // let centerY = canvas.height/2;
-            // let ballRad = 50;
-            // let ballColor = "rgb(0, 0, 255)";
-            // let g = 9.86665;
-            // let d = centerX / g;
-            // let os = navigator.platform;
-            // if(os === "iPhone" || os === "iPad" || os === "iPod") {
-            //     aX *= -1;
-            //     aY *= -1;
-            //     aZ *= -1;
-            // }
-            // context.clearRect(0, 0, canvas.width, canvas.height);
-            // context.beginPath()
-            // context.arc(centerX - d * aX, centerY + d * aY, ballRad - 3 * aZ, 0, 2 * Math.PI);
-            // context.fillStyle = ballColor;
-            // context.fill();
+            let centerX = canvas.width/2;
+            let centerY = canvas.height/2;
+            let ballRad = 50;
+            let ballColor = "rgb(0, 0, 255)";
+            let g = 9.86665;
+            let d = centerX / g;
+            let os = navigator.platform;
+            if(os === "iPhone" || os === "iPad" || os === "iPod") {
+                aX *= -1;
+                aY *= -1;
+                aZ *= -1;
+            }
+            context.clearRect(0, 0, canvas.width, canvas.height);
+            context.beginPath()
+            context.arc(centerX - d * aX, centerY + d * aY, ballRad - 3 * aZ, 0, 2 * Math.PI);
+            context.fillStyle = ballColor;
+            context.fill();
         }
 
     </script>
