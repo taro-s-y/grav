@@ -111,16 +111,16 @@
             }
         }
 
-
-
-        let canvas = document.getElemetById( 'canvas' );
+        let timer = window.setInterval(() => {
+            displayData();
+            drawBall();
+        }, 33);
 
         function displayData() {
             let txt = document.getElementById( "txt" );
             txt.innerHTML = "x: " + aX + "<br>" + "y: " + aY + "<br>" + "z: " + aZ;
 
         }
-
 
         function drawBall() {
             let canvas = document.getElemetById( 'canvas' );
@@ -138,21 +138,17 @@
                 aZ *= -1;
             }
 
-            let txt2 = document.getElementById( "txt2" );
-            txt2.innerHTML = "x: " + centerX-d*aX + "<br>" + "y: " + centerY+d*aY + "<br>" + "z: " + ballRad-3*aZ;
+            // let txt2 = document.getElementById( "txt2" );
+            // txt2.innerHTML = "x: " + aX + "<br>" + "y: " + aY + "<br>" + "z: " + aZ;
 
             ctxt.clearRect(0, 0, canvas.width, canvas.height);
             ctxt.beginPath()
-            ctxt.arc(centerX - d * aX, centerY + d * aY, ballRad - 3 * aZ, 0, 2 * 3.14); //Math.PI);
+            ctxt.arc(centerX - d * aX, centerY + d * aY, ballRad - 3 * aZ, 0, 2 * Math.PI);
             ctxt.fillStyle = ballColor;
             ctxt.fill();
         }
 
-        let timer = window.setInterval(() => {
-            displayData();
-            drawBall();
-        }, 33);
-        
+
     </script>
 
     
