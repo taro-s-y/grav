@@ -109,20 +109,10 @@
                 aY = e.accelerationIncludingGravity.y;
                 aZ = e.accelerationIncludingGravity.z;
             }
-        }
 
-        let timer = window.setInterval(() => {
-            displayData();
-            drawBall();
-        }, 33);
-
-        function displayData() {
             let txt = document.getElementById( "txt" );
             txt.innerHTML = "x: " + aX + "<br>" + "y: " + aY + "<br>" + "z: " + aZ;
 
-        }
-
-        function drawBall() {
             let canvas = document.getElemetById( 'canvas' );
             let ctxt = canvas.getContext( '2d' );
             let centerX = canvas.width/2;
@@ -137,9 +127,6 @@
                 aY *= -1;
                 aZ *= -1;
             }
-
-            // let txt2 = document.getElementById( "txt2" );
-            // txt2.innerHTML = "x: " + aX + "<br>" + "y: " + aY + "<br>" + "z: " + aZ;
 
             ctxt.clearRect(0, 0, canvas.width, canvas.height);
             ctxt.beginPath()
