@@ -111,26 +111,14 @@
             }
         }
 
-        let timer = window.setInterval(() => {
-            displayData();
-            drawBall();
-        }, 33);
+
 
         let canvas = document.getElemetById( 'canvas' );
-
-        centerX = canvas.width/2;
-        centerY = canvas.height/2;
-        ballRad = 50;
-        g = 9.80665;
-        d = centerX / g;
 
         function displayData() {
             let txt = document.getElementById( "txt" );
             txt.innerHTML = "x: " + aX + "<br>" + "y: " + aY + "<br>" + "z: " + aZ;
 
-            let txt2 = document.getElementById( "txt2" );
-            // txt2.innerHTML = "x: " + aX + "<br>" + "y: " + aY + "<br>" + "z: " + aZ;
-            txt2.innerHTML = "x: " + centerX + "<br>" + "y: " + centerY + "<br>" + "z: " + ballRad;
         }
 
 
@@ -151,7 +139,6 @@
             }
 
             let txt2 = document.getElementById( "txt2" );
-            // txt2.innerHTML = "x: " + aX + "<br>" + "y: " + aY + "<br>" + "z: " + aZ;
             txt2.innerHTML = "x: " + centerX-d*aX + "<br>" + "y: " + centerY+d*aY + "<br>" + "z: " + ballRad-3*aZ;
 
             ctxt.clearRect(0, 0, canvas.width, canvas.height);
@@ -161,7 +148,11 @@
             ctxt.fill();
         }
 
-
+        let timer = window.setInterval(() => {
+            displayData();
+            drawBall();
+        }, 33);
+        
     </script>
 
     
