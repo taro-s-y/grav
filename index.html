@@ -105,6 +105,12 @@
             }
         }
 
+        let timer = window.setInterval(() => {
+            displayData();
+            drawBall();
+        }, 33);
+
+
         function displayData() {
             let txt = document.getElementById( "txt" );
             txt.innerHTML = "x: " + aX + "<br>" + "y: " + aY + "<br>" + "z: " + aZ;
@@ -135,10 +141,6 @@
             ctxt.fill();
         }
 
-        let timer = window.setInterval(() => {
-            displayData();
-            drawBall();
-        }, 33);
 
     </script>
 
