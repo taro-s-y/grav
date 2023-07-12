@@ -120,16 +120,10 @@
             let ballColor = "rgb(0, 0, 255)";
             let g = 9.80665;
             let d = centerX / g;
-            let os = navigator.platform;
-            if(os === "iPhone" || os === "iPad" || os === "iPod") {
-                aX *= -1;
-                aY *= -1;
-                aZ *= -1;
-            }
 
             ctxt.clearRect(0, 0, canvas.width, canvas.height);
             ctxt.beginPath()
-            ctxt.arc(centerX - d * aX, centerY + d * aY, ballRad - 3 * aZ, 0, 2 * Math.PI);
+            ctxt.arc(centerX + d * aX, centerY - d * aY, ballRad + 3 * aZ, 0, 2 * Math.PI);
             ctxt.fillStyle = ballColor;
             ctxt.fill();
         }
