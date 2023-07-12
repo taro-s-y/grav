@@ -31,6 +31,7 @@
     <div class = "container">
         <canvas id = "canvas" width = "300" height = "400"></canvas>
         <div id = "txt">ここにデータを表示</div>
+        <div id = "txt2">ここにもデータを表示</div>
         <div id = "cdiv">
             <canvas id = "start" width = "100" height = "75"></canvas>
             <canvas id = "end" width = "100" height = "75"></canvas>
@@ -123,6 +124,9 @@
                 aY *= -1;
                 aZ *= -1;
             }
+
+            let txt2 = document.getElementById( "txt2" );
+            txt2.innerHTML = "x: " + centerX - d * aX + "<br>" + "y: " + centerY + d * aY + "<br>" + "z: " + ballRad - 3 * aZ;
             ctxt.clearRect(0, 0, canvas.width, canvas.height);
             ctxt.beginPath()
             ctxt.arc(centerX - d * aX, centerY + d * aY, ballRad - 3 * aZ, 0, 2 * 3.14); //Math.PI);
