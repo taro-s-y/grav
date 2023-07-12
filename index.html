@@ -115,17 +115,8 @@
             let txt = document.getElementById( "txt" );
             txt.innerHTML = "x: " + aX + "<br>" + "y: " + aY + "<br>" + "z: " + aZ;
 
-            // let canvas = document.getElemetById( 'canvas' );
-            // let centerX = canvas.width/2;
-            // let centerY = canvas.height/2;
-            // let ballRad = 50;
-            // let g = 9.80665;
-            // let d = centerX / g;
-
-            let txt2 = document.getElementById( "txt2" );
-            txt2.innerHTML = "x: " + aX + "<br>" + "y: " + aY + "<br>" + "z: " + aZ;
-            // txt2.innerHTML = "x: " + centerX + d * aX + "<br>" + "y: " + centerY - d * aY + "<br>" + "z: " + ballRad + 3 * aZ;
         }
+
 
         function drawBall() {
             let canvas = document.getElemetById( 'canvas' );
@@ -143,6 +134,10 @@
                 aZ *= -1;
             }
 
+            let txt2 = document.getElementById( "txt2" );
+            // txt2.innerHTML = "x: " + aX + "<br>" + "y: " + aY + "<br>" + "z: " + aZ;
+            txt2.innerHTML = "x: " + ( centerX + d * aX ) + "<br>" + "y: " + ( centerY - d * aY ) + "<br>" + "z: " + ( ballRad + 3 * aZ );
+            
             ctxt.clearRect(0, 0, canvas.width, canvas.height);
             ctxt.beginPath()
             ctxt.arc(centerX - d * aX, centerY + d * aY, ballRad - 3 * aZ, 0, 2 * 3.14); //Math.PI);
