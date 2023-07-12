@@ -115,10 +115,10 @@
             let txt = document.getElementById( "txt" );
             txt.innerHTML = "x: " + aX + "<br>" + "y: " + aY + "<br>" + "z: " + aZ;
 
-            let canvas = document.getElemetById( 'canvas' );
+            // let canvas = document.getElemetById( 'canvas' );
             let ctxt = canvas.getContext( '2d' );
-            let centerX = canvas.width/2;
-            let centerY = canvas.height/2;
+            let centerX = 150; //canvas.width/2;
+            let centerY = 200; //canvas.height/2;
             let ballRad = 50;
             let ballColor = "rgb(0, 0, 255)";
             let g = 9.80665;
