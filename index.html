@@ -103,15 +103,7 @@
                 aY = e.accelerationIncludingGravity.y;
                 aZ = e.accelerationIncludingGravity.z;
             }
-
-
-            drawBall();
         }
-
-        let timer = window.setInterval(() => {
-            displayData();
-            drawBawll();
-        }, 33);
 
         function displayData() {
             let txt = document.getElementById( "txt" );
@@ -142,6 +134,11 @@
             ctxt.fillStyle = ballColor;
             ctxt.fill();
         }
+
+        let timer = window.setInterval(() => {
+            displayData();
+            drawBawll();
+        }, 33);
 
     </script>
 
