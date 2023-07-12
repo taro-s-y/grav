@@ -104,9 +104,18 @@
                 aZ = e.accelerationIncludingGravity.z;
             }
 
+
+            drawBall();
+        }
+
+        let timer = window.setInterval(() => {
+            displayData();
+            drawBawll();
+        }, 33)
+
+        function displayData() {
             let txt = document.getElementById( "txt" );
             txt.innerHTML = "x: " + aX + "<br>" + "y: " + aY + "<br>" + "z: " + aZ;
-            drawBall();
         }
 
         function drawBall() {
