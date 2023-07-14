@@ -140,16 +140,16 @@
             player.y += player.sp * aY;
             if(player.x < 0) {
                 player.x = 0;
-            } else if(player.x > canvas.width) {
-                player.x = canvas.width;
+            } else if(player.x > 640) {
+                player.x = 640;
             }
             if(player.y < 0) {
                 player.y = 0;
-            } else if(player.y > canvas.height) {
-                player.y = canvas.height;
+            } else if(player.y > 640) {
+                player.y = 640;
             }
 
-            ctxt.clearRect(0, 0, canvas.width, canvas.height);
+            ctxt.clearRect(0, 0, 640, 640);
             ctxt.beginPath();
             // ctxt.arc(centerX + d * aX, centerY - d * aY, ballRad + 3 * aZ, 0, 2 * Math.PI);
             ctxt.arc(player.x, player.y, player.radius, 0, 2 * Math.PI);
