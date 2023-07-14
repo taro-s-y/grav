@@ -32,7 +32,7 @@
         <p></p>
     </div>
     <div class = "container">
-        <canvas id = "canvas" width = "400" height = "400"></canvas>
+        <canvas id = "canvas" width = "800" height = "800"></canvas>
         <div id = "txt">ここにデータを表示</div>
         <div id = "cdiv">
             <canvas id = "start" width = "100" height = "75"></canvas>
@@ -117,12 +117,12 @@
 
             // let canvas = document.getElemetById( 'canvas' );
             let ctxt = canvas.getContext( '2d' );
-            let centerX = 200; //canvas.width/2;
-            let centerY = 200; //canvas.height/2;
+            let centerX = 400; //canvas.width/2;
+            let centerY = 400; //canvas.height/2;
             let ballRad = 50;
             let ballColor = "rgb(0, 0, 255)";
             let g = 9.80665;
-            let d = centerX / g;
+            let d = centerX / g /2;
 
             ctxt.clearRect(0, 0, canvas.width, canvas.height);
             ctxt.beginPath()
