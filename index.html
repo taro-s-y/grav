@@ -48,8 +48,8 @@
 
         class Ball {
             constructor() {
-                this.x = 320;//canvas.width / 2;
-                this.y = 320;//canvas.height /2 ;
+                this.x = canvas.width / 2;
+                this.y = canvas.height / 2;
                 this.radius = 50;
                 this.color = "rgb(0, 0, 255)";
                 this.sp = 3;
@@ -140,16 +140,16 @@
             player.y += player.sp * aY;
             if(player.x < 0) {
                 player.x = 0;
-            } else if(player.x > 640) {
-                player.x = 640;
+            } else if(player.x > canvas.width) {
+                player.x = canvas.width;
             }
             if(player.y < 0) {
                 player.y = 0;
-            } else if(player.y > 640) {
-                player.y = 640;
+            } else if(player.y > canvas.height) {
+                player.y = canvas.height;
             }
 
-            ctxt.clearRect(0, 0, 640, 640);
+            ctxt.clearRect(0, 0, canvas.width, canvas.height);
             ctxt.beginPath();
             // ctxt.arc(centerX + d * aX, centerY - d * aY, ballRad + 3 * aZ, 0, 2 * Math.PI);
             ctxt.arc(player.x, player.y, player.radius, 0, 2 * Math.PI);
