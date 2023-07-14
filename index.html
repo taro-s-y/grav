@@ -32,7 +32,7 @@
         <p></p>
     </div>
     <div class = "container">
-        <canvas id = "canvas" width = "800" height = "800"></canvas>
+        <canvas id = "canvas" width = "600" height = "600"></canvas>
         <div id = "txt">ここにデータを表示</div>
         <div id = "cdiv">
             <canvas id = "start" width = "100" height = "75"></canvas>
@@ -48,8 +48,8 @@
 
         class Ball {
             constructor() {
-                this.x = 150;
-                this.y = 200;
+                this.x = 300;
+                this.y = 300;
                 this.radius = 20;
                 this.color = "rgb(0, 0, 255)";
                 this.sp = 3;
@@ -58,11 +58,11 @@
         
         let player = new Ball();
 
-        let centerX = 0;
-        let centerY = 0;
-        let ballRad = 0;
-        let g = 0;
-        let d = 0;
+        // let centerX = 0;
+        // let centerY = 0;
+        // let ballRad = 0;
+        // let g = 0;
+        // let d = 0;
 
         function ClickRequestDeviceSensor(){
             DeviceMotionEvent.requestPermission().then( function( response ){
@@ -138,15 +138,15 @@
 
             player.x -= player.sp * aX;
             player.y += player.sp * aY;
-            if(player.x<0) {
+            if(player.x < 0) {
                 player.x = 0;
-            } else if(player.x > canvas.height) {
-                player.y = canvas.height;
+            } else if(player.x > canvas.width) {
+                player.x = canvas.width;
             }
             if(player.y<0) {
                 player.y = 0;
-            } else if(player.xy > canvas.width) {
-                player.x = canvas.width;
+            } else if(player.y > canvas.height) {
+                player.y = canvas.height;
             }
 
             ctxt.clearRect(0, 0, canvas.width, canvas.height);
