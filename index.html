@@ -43,7 +43,21 @@
     <script>
         let isTouch = false;
         let aX = 0, aY = 0, aZ = 0;
+        let canvas = document.getElementById('canvas');
+        let ctext = canvas.getContext('2D');
+
+        class Ball {
+            constructor() {
+                this.x = 150;
+                this.y = 200;
+                this.radius = 20;
+                this.color = "rgb(0, 0, 255)";
+                this.sp = 3;
+            }
+        }
         
+        let player = new Ball();
+
         let centerX = 0;
         let centerY = 0;
         let ballRad = 0;
@@ -115,19 +129,31 @@
             let txt = document.getElementById( "txt" );
             txt.innerHTML = "x: " + aX + "<br>" + "y: " + aY + "<br>" + "z: " + aZ;
 
-            // let canvas = document.getElemetById( 'canvas' );
-            let ctxt = canvas.getContext( '2d' );
-            let centerX = 400; //canvas.width/2;
-            let centerY = 400; //canvas.height/2;
-            let ballRad = 50;
-            let ballColor = "rgb(0, 0, 255)";
-            let g = 9.80665;
-            let d = centerX / g /2;
+            // let centerX = canvas.width/2;
+            // let centerY = canvas.height/2;
+            // let ballRad = 50;
+            // let ballColor = "rgb(0, 0, 255)";
+            // let g = 9.80665;
+            // let d = centerX / g /2;
+
+            player.x -= player.sp * aX;
+            player.y += player.sp * aY;
+            if(player.x<0) {
+                player.x = 0;
+            } else if(player.x > canvas.height) {
+                player.y = canvas.height;
+            }
+            if(player.y<0) {
+                player.y = 0;
+            } else if(player.xy > canvas.width) {
+                player.x = canvas.width;
+            }
 
             ctxt.clearRect(0, 0, canvas.width, canvas.height);
             ctxt.beginPath()
-            ctxt.arc(centerX + d * aX, centerY - d * aY, ballRad + 3 * aZ, 0, 2 * Math.PI);
-            ctxt.fillStyle = ballColor;
+            // ctxt.arc(centerX + d * aX, centerY - d * aY, ballRad + 3 * aZ, 0, 2 * Math.PI);
+            ctxt.arc(player.x, player.y, player.radius, 0, 2 * Math.PI);
+            ctxt.fillStyle = player.color;
             ctxt.fill();
         }
 
