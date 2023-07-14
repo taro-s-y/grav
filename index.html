@@ -44,7 +44,7 @@
         let isTouch = false;
         let aX = 0, aY = 0, aZ = 0;
         let canvas = document.getElementById('canvas');
-        let ctext = canvas.getContext('2D');
+        let ctxt = canvas.getContext('2D');
 
         class Ball {
             constructor() {
@@ -143,7 +143,7 @@
             } else if(player.x > canvas.width) {
                 player.x = canvas.width;
             }
-            if(player.y<0) {
+            if(player.y < 0) {
                 player.y = 0;
             } else if(player.y > canvas.height) {
                 player.y = canvas.height;
