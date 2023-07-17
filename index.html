@@ -121,11 +121,11 @@
                 aZ = e.accelerationIncludingGravity.z;
             }
 
-            display();
+            display_xyz();
             draw_ball();
         }
 
-        function display(){
+        function display_xyz(){
             let txt = document.getElementById( "txt" );
             txt.innerHTML = "x: " + aX + "<br>" + "y: " + aY + "<br>" + "z: " + aZ;
         }
