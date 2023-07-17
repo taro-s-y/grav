@@ -132,7 +132,7 @@
         }
 
         function draw_ball(){
-            player.x -= player.sp * aX;
+            player.x += player.sp * aX;
             player.y += player.sp * aY;
             if(player.x < 0) {
                 player.x = 0;
