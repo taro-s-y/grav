@@ -112,6 +112,20 @@
             isTouch = false;
         }
 
+
+        function deviceMotion( e ){
+            e.preventDefault();
+            if( isTouch ){
+                aX = e.accelerationIncludingGravity.x;
+                aY = e.accelerationIncludingGravity.y;
+                aZ = e.accelerationIncludingGravity.z;
+            }
+
+            display();
+            draw_ball();
+        }
+
+
         function display(){
             let txt = document.getElementById( "txt" );
             txt.innerHTML = "x: " + aX + "<br>" + "y: " + aY + "<br>" + "z: " + aZ;
@@ -136,19 +150,6 @@
             ctxt.arc(player.x, player.y, player.radius, 0, 2 * Math.PI);
             ctxt.fillStyle = player.color;
             ctxt.fill();
-        }
-
-        function deviceMotion( e ){
-            e.preventDefault();
-            if( isTouch ){
-                aX = e.accelerationIncludingGravity.x;
-                aY = e.accelerationIncludingGravity.y;
-                aZ = e.accelerationIncludingGravity.z;
-            }
-
-            display();
-            draw_ball();
-
         }
 
 
