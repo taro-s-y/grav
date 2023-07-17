@@ -125,14 +125,13 @@
             draw_ball();
         }
 
-
         function display(){
             let txt = document.getElementById( "txt" );
             txt.innerHTML = "x: " + aX + "<br>" + "y: " + aY + "<br>" + "z: " + aZ;
         }
 
         function draw_ball(){
-            player.x += player.sp * aX;
+            player.x -= player.sp * aX;
             player.y += player.sp * aY;
             if(player.x < 0) {
                 player.x = 0;
@@ -145,9 +144,9 @@
                 player.y = canvas.height;
             }
 
-            ctxt.clearRect(0, 0, canvas.width, canvas.height);
+            ctxt.clearRect(0, 0, 200, 200); //canvas.width, canvas.height);
             ctxt.beginPath();
-            ctxt.arc(player.x, player.y, player.radius, 0, 2 * Math.PI);
+            ctxt.arc(50, 50, 50, 0, 2*Math.PI); //player.x, player.y, player.radius, 0, 2 * Math.PI);
             ctxt.fillStyle = player.color;
             ctxt.fill();
         }
