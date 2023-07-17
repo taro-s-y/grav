@@ -58,12 +58,6 @@
         
         let player = new Ball();
 
-        // let centerX = 0;
-        // let centerY = 0;
-        // let ballRad = 0;
-        // let g = 0;
-        // let d = 0;
-
         function ClickRequestDeviceSensor(){
             DeviceMotionEvent.requestPermission().then( function( response ){
                 if( response === 'granted' ){
@@ -118,24 +112,12 @@
             isTouch = false;
         }
 
-        function deviceMotion( e ){
-            e.preventDefault();
-            if( isTouch ){
-                aX = e.accelerationIncludingGravity.x;
-                aY = e.accelerationIncludingGravity.y;
-                aZ = e.accelerationIncludingGravity.z;
-            }
-
+        function display(){
             let txt = document.getElementById( "txt" );
             txt.innerHTML = "x: " + aX + "<br>" + "y: " + aY + "<br>" + "z: " + aZ;
+        }
 
-            // let centerX = canvas.width/2;
-            // let centerY = canvas.height/2;
-            // let ballRad = 50;
-            // let ballColor = "rgb(0, 0, 255)";
-            // let g = 9.80665;
-            // let d = centerX / g /2;
-
+        function draw_ball(){
             player.x -= player.sp * aX;
             player.y += player.sp * aY;
             if(player.x < 0) {
@@ -151,10 +133,22 @@
 
             ctxt.clearRect(0, 0, canvas.width, canvas.height);
             ctxt.beginPath();
-            // ctxt.arc(centerX + d * aX, centerY - d * aY, ballRad + 3 * aZ, 0, 2 * Math.PI);
             ctxt.arc(player.x, player.y, player.radius, 0, 2 * Math.PI);
             ctxt.fillStyle = player.color;
             ctxt.fill();
+        }
+
+        function deviceMotion( e ){
+            e.preventDefault();
+            if( isTouch ){
+                aX = e.accelerationIncludingGravity.x;
+                aY = e.accelerationIncludingGravity.y;
+                aZ = e.accelerationIncludingGravity.z;
+            }
+
+            display();
+            draw_ball();
+
         }
 
 
