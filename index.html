@@ -131,23 +131,31 @@
         }
 
         function draw_ball(){
-            player.x += player.sp * aX;
-            player.y -= player.sp * aY;
-            if(player.x < 0) {
-                player.x = 0;
-            } else if(player.x > canvas.width) {
-                player.x = canvas.width;
-            }
-            if(player.y < 0) {
-                player.y = 0;
-            } else if(player.y > canvas.height) {
-                player.y = canvas.height;
-            }
+            // player.x += player.sp * aX;
+            // player.y -= player.sp * aY;
+            // if(player.x < 0) {
+            //     player.x = 0;
+            // } else if(player.x > canvas.width) {
+            //     player.x = canvas.width;
+            // }
+            // if(player.y < 0) {
+            //     player.y = 0;
+            // } else if(player.y > canvas.height) {
+            //     player.y = canvas.height;
+            // }
+
+            let centerX = canvas.width / 2;
+            let centerY = canvas.height / 2;
+            let ballRad = 50;
+            let ballColor = "rgb(0, 0, 255)";
+            let g = 9.80655;
+            let d = centerX/g;
+
 
             ctxt.clearRect(0, 0, canvas.width, canvas.height);
             ctxt.beginPath();
-            ctxt.arc(player.x, player.y, player.radius, 0, 2 * Math.PI);
-            ctxt.fillStyle = player.color;
+            ctxt.arc(centerX - d * aX, centerY + d * dY, ballRad - 3 * aZ,0, 2 * Math.PI); //player.x, player.y, player.radius, 0, 2 * Math.PI);
+            ctxt.fillStyle = ballColor;
             ctxt.fill();
         }
 
