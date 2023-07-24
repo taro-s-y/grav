@@ -131,22 +131,22 @@
         }
 
         function draw_ball(){
-            // player.x -= player.sp * aX;
-            // player.y += player.sp * aY;
-            // if(player.x < 0) {
-            //     player.x = 0;
-            // } else if(player.x > canvas.width) {
-            //     player.x = canvas.width;
-            // }
-            // if(player.y < 0) {
-            //     player.y = 0;
-            // } else if(player.y > canvas.height) {
-            //     player.y = canvas.height;
-            // }
+            player.x -= player.sp * aX;
+            player.y += player.sp * aY;
+            if(player.x < 0) {
+                player.x = 0;
+            } else if(player.x > canvas.width) {
+                player.x = canvas.width;
+            }
+            if(player.y < 0) {
+                player.y = 0;
+            } else if(player.y > canvas.height) {
+                player.y = canvas.height;
+            }
 
-            ctxt.clearRect(0, 0, 200, 200); //canvas.width, canvas.height);
+            ctxt.clearRect(0, 0, canvas.width, canvas.height);
             ctxt.beginPath();
-            ctxt.arc(50, 50, 50, 0, 2*Math.PI); //player.x, player.y, player.radius, 0, 2 * Math.PI);
+            ctxt.arc(player.x, player.y, player.radius, 0, 2 * Math.PI);
             ctxt.fillStyle = player.color;
             ctxt.fill();
         }
